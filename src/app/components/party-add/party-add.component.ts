@@ -1,3 +1,4 @@
+import { ArrayType } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Party } from 'src/app/models/party';
 import { PartyService } from 'src/app/services/party.service';
@@ -12,7 +13,9 @@ export class PartyAddComponent implements OnInit {
   party: Party = {
     firstname: '',
     surname: '',
-    isorg: false
+    familyname: '',
+    isorg: false,
+    
   };
   submitted = false;
 
@@ -25,7 +28,11 @@ export class PartyAddComponent implements OnInit {
     const data = {
       firstname: this.party.firstname,
       surname: this.party.surname,
-      isorg: this.party.isorg
+      familyname: this.party.familyname,
+      isorg: this.party.isorg,
+      orgname: this.party.orgname,
+      dob: this.party.dob,
+      imageurl: this.party.imageurl
     };
 
     this.partyService.create(data)

@@ -32,14 +32,14 @@ export class PartyService {
     return this.http.put(`${baseUrl}`, data);
   }
 
-  delete(id: any): Observable<any> {
+  delete(id: number): Observable<Party> {
     return this.http.delete(`${baseUrl}/${id}`);
   }
-
+/*
   deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }
-
+*/
   findByFirstname(firstname: any): Observable<Party[]> {
     return this.http.get<Party[]>(`${baseUrl}/?firstname=${firstname}`);
   }

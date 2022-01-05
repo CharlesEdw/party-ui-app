@@ -9,15 +9,37 @@ import { PartyService } from 'src/app/services/party.service';
 })
 export class PartyListComponent implements OnInit {
 
-  parties?: Party[];
+  parties: Party[] = [];
   currentParty: Party = {};
   currentIndex = -1;
   firstname = '';
+  page = 1;
+  count = 0;
+  pageSize = 2;
+  pageSizes = [2, 3, 4, 5, 8, 10, 20, 50];
 
   constructor(private partyService: PartyService) { }
 
   ngOnInit(): void {
     this.retrieveParties();
+  }
+
+  getRequestParams(searchFirstname: string, page: number, pageSize: number): any {
+    let params: any = {};
+
+    if (searchFirstname) {
+      params[`firstname`] = searchFirstname;
+    }
+
+    if (page) {
+      params[`page`] = page - 1;
+    }
+
+    if (pageSize) {
+      params[`size`] = pageSize;
+    }
+
+    return params;
   }
 
   retrieveParties(): void {
@@ -29,6 +51,16 @@ export class PartyListComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+  }
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrieveParties();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrieveParties();
   }
 
   refreshList(): void {
@@ -42,18 +74,18 @@ export class PartyListComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  removeAllParties(): void {
-    this.partyService.deleteAll()
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.refreshList();
-        },
-        error: (e) => console.error(e)
-      });
+  deleteParty(): void {
+    console.log(this.currentParty.id)
+    this.partyService.delete(this.currentParty.id)
+    .subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (e) => console.error(e)
+    });
   }
-
   searchFirstname(): void {
+    this.page = 1;
     this.currentParty = {};
     this.currentIndex = -1;
     this.partyService.findByFirstname(this.firstname)
