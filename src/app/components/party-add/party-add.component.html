@@ -1,6 +1,26 @@
 <div class="container">
     <div class="submit-form">
       <div *ngIf="!submitted">
+
+        <h4>Party</h4><p></p>
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="dob" required [(ngModel)]="party.isorg">
+          <label class="form-check-label" for="isorg">Is an Organisation</label>
+        </div>
+
+        <div class="form-group">
+          <label for="orgname">Organisation name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="orgname"
+            required
+            [(ngModel)]="party.orgname"
+            name="orgname"
+          />
+        </div>
+        <p></p>
         <div class="form-group">
           <label for="firstname">Firstname</label>
           <input
@@ -36,23 +56,6 @@
           />
         </div>
 
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="dob" required [(ngModel)]="party.isorg">
-          <label class="form-check-label" for="isorg">Is an Organisation</label>
-        </div>
-
-        <div class="form-group">
-          <label for="orgname">Organisation name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="orgname"
-            required
-            [(ngModel)]="party.orgname"
-            name="orgname"
-          />
-        </div>
-
         <div class="form-group">
           <label for="dob">Date of Birth</label>
           <input
@@ -66,8 +69,26 @@
           />
         </div>
   
-        <button  class="btn btn-info"><a [routerLink]="[ '..','parties' ]">Cancel</a></button>
-        <button (click)="saveParty()" class="btn btn-success">Submit</button>
+        <div class="form-group">
+          <label for="dob">Image url</label>
+          <input
+            type="text"
+            class="form-control"
+            id="imageurl"
+            required
+            [(ngModel)]="party.imageurl"
+            name="imageurl"
+          />
+        </div>
+        <div class="row">
+          <div class="col-2  gy-2">
+           <button  class="btn btn-info"><a [routerLink]="[ '..','parties' ]">Cancel</a></button>
+          </div>
+          <div class="col-2  gy-2">
+            <button (click)="saveParty()" class="btn btn-success">  Save </button>
+          </div>
+
+        </div>
       </div>
   
       <div *ngIf="submitted">
