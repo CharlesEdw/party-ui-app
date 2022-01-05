@@ -1,129 +1,121 @@
 <div *ngIf="viewMode; else editable">
-    <div *ngIf="currentParty.id">
-      <h4>Party</h4>
-      <div>
-        <label><strong>Firstname:</strong></label> {{ currentParty.firstname }}
-      </div>
-      <div>
-        <label><strong>Surname:</strong></label>
-        {{ currentParty.surname }}
-      </div>
-      <div>
-        <label><strong>Organisation name:</strong></label>
-        {{ currentParty.orgname }}
-      </div>
-      <div>
-        <label><strong>Status:</strong></label>
-        {{ currentParty.isorg ? "Org" : "Not Org" }}
-      </div>
-      <div>
-        <label><strong>Family name:</strong></label>
-        {{ currentParty.familyname }}
-      </div>      
-
-      <a
-        class="btn btn-info" routerLink="/parties/{{ currentParty.id }}">Edit</a>
+  <div *ngIf="currentParty.id">
+    <h4>Party</h4>
+    <div>
+      <label><strong>Firstname:</strong></label> {{ currentParty.firstname }}
     </div>
-  
-    <div *ngIf="!currentParty">
-      <br />
-      <p>Please click on a Party...</p>
+    <div>
+      <label><strong>Surname:</strong></label>
+      {{ currentParty.surname }}
     </div>
+    <div>
+      <label><strong>Organisation name:</strong></label>
+      {{ currentParty.orgname }}
+    </div>
+    <div>
+      <label><strong>Status:</strong></label>
+      {{ currentParty.isorg ? "Org" : "Not Org" }}
+    </div>
+    <div>
+      <label><strong>Family name:</strong></label>
+      {{ currentParty.familyname }}
+    </div>      
+    <a class="btn btn-info" routerLink="/parties/{{ currentParty.id }}">Edit</a>
   </div>
   
-  <ng-template #editable>
-    <div *ngIf="currentParty.id" class="edit-form">
-      <h4>Party</h4>
-      <form>
-        <div>
-          <a>Id number:  </a><a>{{currentParty.id}}</a><p></p>
-        </div>
-        <div class="form-group">
-          <label for="firstname">Firstname</label>
-          <input
-            type="text"
-            class="form-control"
-            id="firstname"
-            [(ngModel)]="currentParty.firstname"
-            name="firstname"
-          />
-        </div>
-        <div class="form-group">
-          <label for="surname">Surname</label>
-          <input
-            type="text"
-            class="form-control"
-            id="surname"
-            [(ngModel)]="currentParty.surname"
-            name="surname"
-          />
-        </div>
+  <div *ngIf="!currentParty">
+    <br />
+    <p>Please click on a Party...</p>
+  </div>
+</div>
   
-        <div class="form-group">
-          <label for="familyname">Family name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="familyname"
-            [(ngModel)]="currentParty.familyname"
-            name="familyname"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label><strong>IsOrg:</strong></label>
-          {{ currentParty.isorg ? "Org" : "Not Org" }}
+<ng-template #editable>
+  <div *ngIf="currentParty.id" class="edit-form">
+    <h4>Party</h4>
+    <form>
+      <div>
+        <a>Id number:  </a><a>{{currentParty.id}}</a><p></p>
+      </div>
+      <div class="form-group">
+        <label for="firstname">Firstname</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstname"
+          [(ngModel)]="currentParty.firstname"
+          name="firstname"
+        />
+      </div>
+      <div class="form-group">
+        <label for="surname">Surname</label>
+        <input
+          type="text"
+          class="form-control"
+          id="surname"
+          [(ngModel)]="currentParty.surname"
+          name="surname"
+        />
+      </div>
 
-          <button
-            class="badge badge-primary mr-2"
-            *ngIf="currentParty.isorg"
-            (click)="updateIsOrg(false)">Not Org
-          </button>
-          <button
-            *ngIf="!currentParty.isorg"
-            class="badge badge-primary mr-2"
-            (click)="updateIsOrg(true)">Make Org
-          </button>
-        </div>
+      <div class="form-group">
+        <label for="familyname">Family name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="familyname"
+          [(ngModel)]="currentParty.familyname"
+          name="familyname"
+        />
+      </div>
 
-        <div class="form-group">
-          <label for="orgname">Organisation name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="orgname"
-            [(ngModel)]="currentParty.orgname"
-            name="orgname"
-          />
-        </div>
+      <div class="form-group">
+        <label><strong>IsOrg:</strong></label>
+        {{ currentParty.isorg ? "Org" : "Not Org" }}
 
-        <div class="form-group">
-          <label for="imageurl">imageurl</label>
-          <input
-            type="text"
-            class="form-control"
-            id="imageurl"
-            [(ngModel)]="currentParty.imageurl"
-            name="imageurl"
-          />
-        </div>
+        <button
+          class="badge badge-primary mr-2"
+          *ngIf="currentParty.isorg"
+          (click)="updateIsOrg(false)">Not Org
+        </button>
+        <button
+          *ngIf="!currentParty.isorg"
+          class="badge badge-primary mr-2"
+          (click)="updateIsOrg(true)">Make Org
+        </button>
+      </div>
 
-      </form>
+      <div class="form-group">
+        <label for="orgname">Organisation name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="orgname"
+          [(ngModel)]="currentParty.orgname"
+          name="orgname"
+        />
+      </div>
 
-      <button  class="btn btn-info"><a [routerLink]="[ '../..','parties' ]">Cancel</a></button>
-      <button class="btn btn-danger" (click)="deleteParty()">Delete</button>
-  
-      <button
-        type="submit"
-        class="btn btn-primary"
-        (click)="updateParty()">
-        Update
-      </button>
-      <p>{{ message }}</p>
-    </div>
-  
-    <div *ngIf="!currentParty.id">
-      <br />
-      <p>Cannot access this Party...</p>
-    </div>
-  </ng-template>
+      <div class="form-group">
+        <label for="imageurl">imageurl</label>
+        <input
+          type="text"
+          class="form-control"
+          id="imageurl"
+          [(ngModel)]="currentParty.imageurl"
+          name="imageurl"
+        />
+      </div>
+
+    </form>
+
+    <button class="btn btn-info"><a [routerLink]="[ '../..','parties' ]">Cancel</a></button>
+    <button class="btn btn-danger" (click)="deleteParty()">Delete</button>
+    <button type="submit" class="btn btn-primary" (click)="updateParty()">Update</button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentParty.id">
+    <br />
+    <p>Cannot access this Party...</p>
+  </div>
+</ng-template>
