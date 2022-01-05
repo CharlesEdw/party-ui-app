@@ -9,16 +9,20 @@
         {{ currentParty.surname }}
       </div>
       <div>
+        <label><strong>Organisation name:</strong></label>
+        {{ currentParty.orgname }}
+      </div>
+      <div>
         <label><strong>Status:</strong></label>
         {{ currentParty.isorg ? "Org" : "Not Org" }}
       </div>
-  
+      <div>
+        <label><strong>Family name:</strong></label>
+        {{ currentParty.familyname }}
+      </div>      
+
       <a
-        class="btn btn-info"
-        routerLink="/parties/{{ currentParty.id }}"
-      >
-        Edit
-      </a>
+        class="btn btn-info" routerLink="/parties/{{ currentParty.id }}">Edit</a>
     </div>
   
     <div *ngIf="!currentParty">
@@ -106,8 +110,7 @@
 
       </form>
 
-      <button  class="btn btn-info"><a [routerLink]="[ '..','' ]">Cancel</a></button>
-  
+      <button  class="btn btn-info"><a [routerLink]="[ '../..','parties' ]">Cancel</a></button>
       <button class="btn btn-danger" (click)="deleteParty()">Delete</button>
   
       <button

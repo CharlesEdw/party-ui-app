@@ -1,4 +1,4 @@
-<div class="list row, container-fluid">
+<div class="list row">
   <div class="col-md-8">
     <div class="input-group mb-3">
       <input
@@ -19,45 +19,49 @@
     </div>
   </div>
 
-  <div class="col-md-6,, container-fluid">
+  <div class="container-xxl">
     <h4>Parties List</h4>
-    <ul class="list-group">
+    <button  class="btn btn-info"><a [routerLink]="[ '..','add' ]">Add</a></button>
+    <div class="row">
+  
+      <div class="col">
+        <ul class="list-group">
+          <div  class="list-group-item"
+              *ngFor="let party of parties; let i = index"
+              [class.active]="i == currentIndex"
+              (click)="setActiveParty(party, i)"> 
+            <div class="card-horizontal">
+              <div>
+                <img class="card-img-top" src="{{party.imageurl}}"
+                width="150" height="150">
+              </div>
+              <div class="card-body">
 
-      <div  class="list-group-item"
-          *ngFor="let party of parties; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveParty(party, i)"> 
-        <div class="card-horizontal">
-          <div>
-            <img class="card-img-top" src="{{party.imageurl}}"
-            width="150" height="150">
-          </div>
-          <div class="card-body">
+                <div class="card-header">
+                  <h5>
+                  {{ party.isorg ? "Organisation:" : "Person:" }}
+                  <a *ngIf="!party.isorg"> {{ party.firstname }} {{ party.surname }}</a>
+                  <a *ngIf="party.isorg"> {{ party.orgname }}</a>
+                  </h5>
+                </div>
+                <div><a>Id:  </a><a>{{ party.id }}</a><p></p></div>
+                <p>Date of Birth: {{ party.dob }}</p>
+              </div>
 
-            <div class="card-header">
-              <h5>
-              {{ party.isorg ? "Organisation:" : "Person:" }}
-              <a *ngIf="!party.isorg"> {{ party.firstname }} {{ party.surname }}</a>
-              <a *ngIf="party.isorg"> {{ party.orgname }}</a>
-              </h5>
+              <div>
+                <a href="#" class="btn btn-danger">Delete</a>
+              </div>
             </div>
-            <div><a>Id:  </a><a>{{ party.id }}</a><p></p></div>
-            <p>Date of Birth: {{ party.dob }}</p>
           </div>
-
-          <div>
-            <a href="#" class="btn btn-info">View</a><p></p>
-            <a href="#" class="btn btn-primary">Edit</a><p></p>
-            <a href="#" class="btn btn-danger">Delete</a>
-          </div>
-        </div>
-    </div>
-    </ul>
+        </ul>
+      </div>  
+      <div class="col">
+        <app-party-details
+          [viewMode]="true"
+          [currentParty]="currentParty"
+        ></app-party-details>
+      </div>
   </div>
-</div>
-<div class="container">
-  <app-party-details
-    [viewMode]="true"
-    [currentParty]="currentParty"
-  ></app-party-details>
+  </div>
+
 </div>
