@@ -44,12 +44,16 @@
 
     <div class=".container">
       <div>
-        
         <div class="d-grid gap-2" >
-          <h4>Parties List</h4>
-          <div class="p-2 bg-light border, d-flex justify-content-center">
-            
-            <button  class="btn btn-primary" [routerLink]="[ '..','add' ]">Add</button>
+          <div class="p-2 bg-light border">
+            <div class="row gy-2">
+              <div class="col mb-4">
+                <h4>Parties List</h4>
+              </div>
+              <div class="col mb-4">
+                <button  class="btn btn-primary " [routerLink]="[ '..','add' ]">Add</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
