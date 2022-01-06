@@ -41,6 +41,14 @@ export class PartyService {
   }
 */
   findByFirstname(firstname: any): Observable<Party[]> {
-    return this.http.get<Party[]>(`${baseUrl}/?firstname=${firstname}`);
+    return this.http.get<Party[]>(`${baseUrl}/firstname/?firstname=${firstname}`);
+  }
+
+  findBySurname(surname: any): Observable<Party[]> {
+    return this.http.get<Party[]>(`${baseUrl}/surname/?surname=${surname}`);
+  }
+  
+  findByOrgname(orgname: any): Observable<Party[]> {
+    return this.http.get<Party[]>(`${baseUrl}/orgname/?orgname=${orgname}`);
   }
 }

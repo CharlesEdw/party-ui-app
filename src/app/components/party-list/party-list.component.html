@@ -1,5 +1,5 @@
 <div class=".container .translate-middle">
-  <div class="row-xxl">
+  <div class="row">
     <div class="col-sm">
       <div class="input-group">
         <input
@@ -13,6 +13,45 @@
             class="btn btn-outline-secondary"
             type="button"
             (click)="searchFirstname()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by surname"
+          [(ngModel)]="surname"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchSurname()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Organisation name"
+          [(ngModel)]="orgname"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchOrgname()"
           >
             Search
           </button>

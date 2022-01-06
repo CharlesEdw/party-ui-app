@@ -13,6 +13,9 @@ export class PartyListComponent implements OnInit {
   currentParty: Party = {};
   currentIndex = -1;
   firstname = '';
+  surname='';
+  orgname='';
+
   page = 1;
   count = 0;
   pageSize = 5;
@@ -89,6 +92,33 @@ export class PartyListComponent implements OnInit {
     this.currentParty = {};
     this.currentIndex = -1;
     this.partyService.findByFirstname(this.firstname)
+      .subscribe({
+        next: (data) => {
+          this.parties = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+  searchSurname(): void {
+    this.page = 1;
+    this.currentParty = {};
+    this.currentIndex = -1;
+    this.partyService.findBySurname(this.surname)
+      .subscribe({
+        next: (data) => {
+          this.parties = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  searchOrgname(): void {
+    this.page = 1;
+    this.currentParty = {};
+    this.currentIndex = -1;
+    this.partyService.findByOrgname(this.orgname)
       .subscribe({
         next: (data) => {
           this.parties = data;
