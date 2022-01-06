@@ -6,24 +6,26 @@
         <label><strong>Id:</strong></label> {{ currentParty.id }}
       </div>
       <div>
+        <label><strong>Is an Organisation:</strong></label>
+        {{ currentParty.isorg ? "Yes" : "No it's a Person" }}
+      </div>
+      <div>
+        <label><strong>Organisation name:</strong></label> {{ currentParty.orgname }}
+      </div>
+      <div>
         <label><strong>Firstname:</strong></label> {{ currentParty.firstname }}
       </div>
       <div>
-        <label><strong>Surname:</strong></label>
-        {{ currentParty.surname }}
+        <label><strong>Surname:</strong></label> {{ currentParty.surname }}
       </div>
       <div>
-        <label><strong>Organisation name:</strong></label>
-        {{ currentParty.orgname }}
-      </div>
-      <div>
-        <label><strong>Status:</strong></label>
-        {{ currentParty.isorg ? "Org" : "Not Org" }}
-      </div>
-      <div>
-        <label><strong>Family name:</strong></label>
-        {{ currentParty.familyname }}
+        <label><strong>Family name:</strong></label> {{ currentParty.familyname }}
       </div>      
+      <div>
+        <label><strong>Date of Birth:</strong></label>
+        {{ currentParty.dob }}
+      </div>      
+
       <a class="btn btn-info" routerLink="/parties/{{ currentParty.id }}">Edit</a>
     </div>
     
