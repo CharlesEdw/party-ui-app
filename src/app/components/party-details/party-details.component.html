@@ -41,11 +41,12 @@
           <a>Id number:  </a><a>{{currentParty.id}}</a><p></p>
         </div>
 
-        <div class="form-check col-md-6">
-          <p></p>
-          <input type="checkbox" class="form-check-input" id="isorg">
-          <label class="form-check-label" for="isorg">Is an Organisation</label>
-          <p></p>
+        <div class="form-group col-md-3">
+          <div class="form-control">
+            <label type="checkbox-inline"  >
+              <input type="checkbox" required [(ngModel)]="currentParty.isorg" name="isorg"> Is an Organisation
+            </label>
+          </div>
         </div>
         
         <div class="form-group col-md-10">
@@ -90,7 +91,6 @@
             name="familyname"/>
         </div>
 
-
         <div class="form-group">
           <label for="imageurl">imageurl</label>
           <input
@@ -101,6 +101,7 @@
             name="imageurl"
           />
         </div>
+
         <div class="form-group col-md-2">
           <label for="dob">Date of Birth</label>
           <input
@@ -125,7 +126,6 @@
           <div class="col-2 gy-4">
             <button type="submit" class="btn btn-primary" (click)="updateParty()" 
             [routerLink]="[ '../..','parties' ]">Update</button>
-            <p>{{ message }}</p>
           </div>
         </div>
       </div>

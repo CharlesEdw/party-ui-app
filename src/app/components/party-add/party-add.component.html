@@ -4,9 +4,12 @@
 
         <h4>Party</h4><p></p>
 
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="dob" required [(ngModel)]="party.isorg">
-          <label class="form-check-label" for="isorg">Is an Organisation</label>
+        <div class="form-group">
+          <div class="form-control">
+            <label type="checkbox-inline"  >
+              <input type="checkbox" required [(ngModel)]="party.isorg" name="isorg"> Is an Organisation
+            </label>
+          </div>
         </div>
 
         <div class="form-group">
@@ -93,7 +96,7 @@
   
       <div *ngIf="submitted">
         <h4>Party was submitted successfully!</h4>
-        <button  class="btn btn-info"> [routerLink]="[ '..','parties' ]">Cancel</button>
+        <button  class="btn btn-info" [routerLink]="[ '..','parties' ]">Cancel</button>
         <button class="btn btn-success" (click)="newParty()">Add Another</button>
         
       </div>

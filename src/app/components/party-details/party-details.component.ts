@@ -44,7 +44,7 @@ export class PartyDetailsComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
-
+/*
   updateIsOrg(status: boolean): void {
     const data = {
       firstname: this.currentParty.firstname,
@@ -61,12 +61,12 @@ export class PartyDetailsComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.currentParty.isorg = status;
-          this.message = res.message ? res.message : 'The Organisation was updated successfully!';
+          this.message = res.message ? res.message : 'The Party was updated successfully!';
         },
         error: (e) => console.error(e)
       });
   }
-
+*/
   updateParty(): void {
     this.message = '';
 
