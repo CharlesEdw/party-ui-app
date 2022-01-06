@@ -15,7 +15,7 @@ export class PartyListComponent implements OnInit {
   firstname = '';
   page = 1;
   count = 0;
-  pageSize = 2;
+  pageSize = 5;
   pageSizes = [2, 3, 4, 5, 8, 10, 20, 50];
 
   constructor(private partyService: PartyService) { }

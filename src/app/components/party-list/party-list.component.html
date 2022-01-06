@@ -1,7 +1,7 @@
 <div class=".container .translate-middle">
-  <div class="list row-xxl">
-    <div class="col-xxl">
-      <div class="input-group mb-3">
+  <div class="row-xxl">
+    <div class="col-sm">
+      <div class="input-group">
         <input
           type="text"
           class="form-control"
@@ -20,25 +20,39 @@
       </div>
     </div>
 
-    <div class="col-xxl">
-      <pagination-controls
-        previousLabel="Prev"
-        nextLabel="Next"
-        [responsive]="true"
-        (pageChange)="handlePageChange($event)"
-      ></pagination-controls>
-      <div class="col-sm">Items per Page:
-        <select (change)="handlePageSizeChange($event)">
-          <option *ngFor="let size of pageSizes" [ngValue]="size">
-            {{ size }}
-          </option>
-        </select>
+    <div class="row gx-6">
+      <div class="col-sm-5">
+        <div class="p-2 border bg-light">
+          <pagination-controls
+            previousLabel="Prev"
+            nextLabel="Next"
+            [responsive]="true"
+            (pageChange)="handlePageChange($event)"
+          ></pagination-controls>
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div class="p-3 border bg-light">Items per Page: 
+          <select (change)="handlePageSizeChange($event)">
+            <option *ngFor="let size of pageSizes" [ngValue]="size">
+             {{ size }}
+            </option>
+          </select>
+        </div>
       </div>
     </div>
 
     <div class=".container">
-      <h4>Parties List</h4>
-      <button  class="btn btn-info"[routerLink]="[ '..','add' ]">Add</button>
+      <div>
+        
+        <div class="d-grid gap-2" >
+          <h4>Parties List</h4>
+          <div class="p-2 bg-light border, d-flex justify-content-center">
+            
+            <button  class="btn btn-primary" [routerLink]="[ '..','add' ]">Add</button>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-sm-7">
           <ul class="list-group">

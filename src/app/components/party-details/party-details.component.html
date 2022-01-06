@@ -1,6 +1,6 @@
 
   <div *ngIf="viewMode; else editable">
-    <div *ngIf="currentParty.id">
+    <div *ngIf="currentParty.id" class="container, border px-2 py-2">
       <h4>Party</h4>
       <div>
         <label><strong>Id:</strong></label> {{ currentParty.id }}
@@ -34,7 +34,7 @@
   </div>
     
   <ng-template #editable>
-    <div *ngIf="currentParty.id" class="edit-form col-md-6">
+    <div *ngIf="currentParty.id" class="edit-form col-md-8 border px-2 py-2">
       <h4>Party</h4>
       <form>
         <div>
@@ -48,7 +48,7 @@
           <p></p>
         </div>
         
-        <div class="form-group">
+        <div class="form-group col-md-10">
           <label for="orgname">Organisation name</label>
           <input
             type="text"
@@ -59,7 +59,7 @@
           />
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-md-6">
           <label for="firstname">Firstname</label>
           <input
             type="text"
@@ -69,7 +69,7 @@
             name="firstname"
           />
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
           <label for="surname">Surname</label>
           <input
             type="text"
@@ -80,7 +80,7 @@
           />
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-md-6">
           <label for="familyname">Family name</label>
           <input
             type="text"
@@ -101,7 +101,7 @@
             name="imageurl"
           />
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-2">
           <label for="dob">Date of Birth</label>
           <input
             type="text"
