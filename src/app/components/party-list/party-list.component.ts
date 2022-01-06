@@ -12,6 +12,7 @@ export class PartyListComponent implements OnInit {
   parties: Party[] = [];
   currentParty: Party = {};
   currentIndex = -1;
+  id=0;
   firstname = '';
   surname='';
   orgname='';
@@ -87,6 +88,7 @@ export class PartyListComponent implements OnInit {
       error: (e) => console.error(e)
     });
   }
+
   searchFirstname(): void {
     this.page = 1;
     this.currentParty = {};
@@ -128,4 +130,17 @@ export class PartyListComponent implements OnInit {
       });
   }
 
+  searchId(): void {
+    this.page = 1;
+    this.currentParty = {};
+    this.currentIndex = -1;
+    this.partyService.findById(this.id)
+      .subscribe({
+        next: (data) => {
+          this.parties = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
 }

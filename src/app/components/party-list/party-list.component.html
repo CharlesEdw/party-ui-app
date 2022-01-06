@@ -1,5 +1,25 @@
 <div class=".container .translate-middle">
   <div class="row">
+    <div class="col-sm-2">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Id"
+          [(ngModel)]="id"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchId()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="col-sm">
       <div class="input-group">
         <input
@@ -19,6 +39,7 @@
         </div>
       </div>
     </div>
+
     <div class="col-sm">
       <div class="input-group">
         <input
@@ -97,6 +118,7 @@
         </div>
       </div>
       <div class="row">
+
         <div class="col-sm-7">
           <ul class="list-group">
             <div  class="list-group-item"
