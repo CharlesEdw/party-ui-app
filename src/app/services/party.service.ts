@@ -52,6 +52,6 @@ export class PartyService {
     return this.http.get<Party[]>(`${baseUrl}/orgname/?orgname=${orgname}`);
   }
   findById(id: any): Observable<Party[]> {
-    return this.http.get<Party[]>(`${baseUrl}/${id}`);
+    return this.http.get<Party[]>(`${baseUrl}/list/${id}`);
   }
 }

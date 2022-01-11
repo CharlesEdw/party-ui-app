@@ -162,8 +162,7 @@ export class PartyListComponent implements OnInit {
         next: (data) => {
           this.parties = data;
           console.log(data);
-        },
-        error: (e) => console.error(e)
+        }
       });
   }
 }
