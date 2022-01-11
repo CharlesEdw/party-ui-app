@@ -17,7 +17,7 @@ export class PartyService {
   }
 
   get(id: any): Observable<Party> {
-    return this.http.get(`${baseUrl}/${id}`);
+    return this.http.get<Party>(`${baseUrl}/${id}`);
   }
 
   create(data: any): Observable<any> {

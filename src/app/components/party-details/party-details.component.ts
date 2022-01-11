@@ -22,9 +22,11 @@ export class PartyDetailsComponent implements OnInit {
     orgname:'',
     imageurl: ''
   };
+    
   message = '';
 
-  constructor(private partyService: PartyService,
+  constructor(
+    private partyService: PartyService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -32,8 +34,23 @@ export class PartyDetailsComponent implements OnInit {
     if (!this.viewMode) {
       this.message = '';
       this.getParty(this.route.snapshot.params["id"]);
+      console.log("Party Id from ngOnInit "+this.route.snapshot.params["id"]);
     }
   }
+  
+  getEditParty(id: number): void {
+        this.partyService.get(id)
+      .subscribe({
+        next: (data) => {
+          this.currentParty
+          console.log("Full Data: "+ data + "Current Party: "+this.currentParty);
+        },
+        error: (err) => { 
+          console.log(err);
+        }
+      });
+  }
+
   getParty(id: string): void {
     this.partyService.get(id)
       .subscribe({

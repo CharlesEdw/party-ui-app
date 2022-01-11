@@ -26,7 +26,7 @@
         {{ currentParty.dob }}
       </div>      
 
-      <a class="btn btn-info" routerLink="/parties/{{ currentParty.id }}">Edit</a>
+      <a class="btn btn-info" routerLink="/parties/{{ currentParty.id }}" (click)="getEditParty(currentParty.id)">Edit</a>
     </div>
     
     <div *ngIf="!currentParty">
