@@ -1,6 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Party } from 'src/app/models/party';
 import { PartyService } from 'src/app/services/party.service';
+
 
 @Component({
   selector: 'app-party-list',
@@ -19,20 +21,34 @@ export class PartyListComponent implements OnInit {
 
   page = 1;
   count = 0;
-  pageSize = 5;
+  pageSize = 4;
   pageSizes = [2, 3, 4, 5, 8, 10, 20, 50];
+  sortBy = 'Id';
+  sortBys = ['Id','Firstname', 'Surname', 'Org Name'];
 
   constructor(private partyService: PartyService) { }
 
   ngOnInit(): void {
-    this.retrieveParties();
+    this.retrieveParties(this.sortBy,this.page, this.pageSize);
   }
 
-  getRequestParams(searchFirstname: string, page: number, pageSize: number): any {
+  getRequestParams(searchSelected: string, page: number, pageSize: number): any {
     let params: any = {};
 
-    if (searchFirstname) {
-      params[`firstname`] = searchFirstname;
+    if (searchSelected == 'Firstname') {
+      params[`sortBy`] = 'firstname';
+    }
+
+    if (searchSelected == 'Id') {
+      params[`sortBy`] = 'id';
+    }
+
+    if (searchSelected == 'Surname') {
+      params[`sortBy`] = 'surname';
+    }
+
+    if (searchSelected == 'Org Name') {
+      params[`sortBy`] = 'orgname';
     }
 
     if (page) {
@@ -46,8 +62,11 @@ export class PartyListComponent implements OnInit {
     return params;
   }
 
-  retrieveParties(): void {
-    this.partyService.getAll()
+  retrieveParties(sortBy: string,page: number,pageSize: number): void {
+    let params: any = {};
+    params = this.getRequestParams(sortBy, page, pageSize);
+    console.log(params);
+    this.partyService.getAll(params)
       .subscribe({
         next: (data) => {
           this.parties = data;
@@ -58,17 +77,21 @@ export class PartyListComponent implements OnInit {
   }
   handlePageChange(event: number): void {
     this.page = event;
-    this.retrieveParties();
+    this.retrieveParties(this.sortBy,this.page, this.pageSize);
   }
 
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
-    this.page = 1;
-    this.retrieveParties();
+    this.retrieveParties(this.sortBy, this.page, this.pageSize);
+  }
+
+  handlePageSortChange(event: any): void {
+    this.sortBy = event.target.value;
+    this.retrieveParties(this.sortBy, this.page, this.pageSize);
   }
 
   refreshList(): void {
-    this.retrieveParties();
+    this.retrieveParties(this.sortBy, this.page, this.pageSize);
     this.currentParty = {};
     this.currentIndex = -1;
   }

@@ -12,8 +12,8 @@ export class PartyService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Party[]> {
-    return this.http.get<Party[]>(`${baseUrl}/all`);
+  getAll(params: any): Observable<Party[]> {
+    return this.http.get<Party[]>(`${baseUrl}/all`, { params });
   }
 
   get(id: any): Observable<Party> {

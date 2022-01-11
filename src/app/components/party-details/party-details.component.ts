@@ -44,29 +44,6 @@ export class PartyDetailsComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
-/*
-  updateIsOrg(status: boolean): void {
-    const data = {
-      firstname: this.currentParty.firstname,
-      surname: this.currentParty.surname,
-
-      isorg: status
-    };
-    
-
-    this.message = '';
-
-    this.partyService.update(data)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.currentParty.isorg = status;
-          this.message = res.message ? res.message : 'The Party was updated successfully!';
-        },
-        error: (e) => console.error(e)
-      });
-  }
-*/
   updateParty(): void {
     this.message = '';
 
