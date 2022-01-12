@@ -82,11 +82,13 @@ export class PartyListComponent implements OnInit {
 
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
+    this.page = 1;
     this.retrieveParties(this.sortBy, this.page, this.pageSize);
   }
 
   handlePageSortChange(event: any): void {
     this.sortBy = event.target.value;
+    this.page = 1;
     this.retrieveParties(this.sortBy, this.page, this.pageSize);
   }
 
