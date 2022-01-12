@@ -81,7 +81,7 @@
     </div>
 
     <div class="row gx-6">
-      <div class="col-sm-4">
+      <div class="col-sm-6">
         <div class="p-2 border bg-light">
           <pagination-controls
             previousLabel="Prev"
@@ -91,7 +91,7 @@
           ></pagination-controls>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <div class="p-3 border bg-light">Items per Page: 
           <select (change)="handlePageSizeChange($event)">
             <option *ngFor="let pageSize of pageSizes" ([ngValue])="pageSize">
@@ -100,7 +100,7 @@
           </select>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <div class="p-3 border bg-light">Sort Order: 
           <select (change)="handlePageSortChange($event)">
             <option *ngFor="let sortBy of sortBys" [ngValue]="sortBy">
